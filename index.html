@@ -1,9 +1,73 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Hi! I am Giulia Golini </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GitHub Page</title>
+    <style>
+        /* Stylish background */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #1e3c72, #2a5298); /* Blue gradient */
+            color: white;
+        }
+
+        /* Profile container */
+        .container {
+            margin-top: 50px;
+        }
+
+        /* Profile picture */
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+        }
+
+        /* Upload button */
+        .upload-btn {
+            margin-top: 15px;
+            background-color: #ffcc00;
+            color: black;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    <h1> I am a PhD student in Astrophysics at the Instituto de Astrofísica de Canarias</h1>
-    <p>This is my first website hosted on GitHub Pages.</p>
+
+    <div class="container">
+        <h1>Welcome to My GitHub Page</h1>
+        <p>A simple, stylish page with a photo upload feature.</p>
+
+        <!-- Profile Image -->
+        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+        <br>
+        <img id="profileImage" src="https://via.placeholder.com/150" class="profile-pic" alt="Profile Picture">
+        <br>
+        <button class="upload-btn" onclick="document.getElementById('fileInput').click();">Upload Photo</button>
+    </div>
+
+    <script>
+        // Handle image upload
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profileImage').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
 </body>
 </html>
